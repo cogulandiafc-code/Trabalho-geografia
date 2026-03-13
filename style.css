@@ -1,0 +1,638 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-main: #FFFFFF;
+    --bg-soft: #F9FAFB;
+    --bg-card: rgba(255, 255, 255, 0.85); /* Efeito translúcido para ler blobs no fundo */
+    
+    /* Paleta Vibrante mas Equilibrada */
+    --primary: #005BAC;    /* Azul Real */
+    --primary-light: #3B82F6;
+    --secondary: #EF4444;  /* Vermelho Vibrante */
+    --secondary-light: #F87171;
+    --accent-gold: #F59E0B;
+    --accent-cyan: #06B6D4;
+    --accent-indigo: #6366F1;
+    
+    --text-main: #111827;
+    --text-muted: #6B7280;
+    --border: rgba(229, 231, 235, 0.5);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-soft);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* BACKGROUND PARTICLES */
+#bg-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Behind the blobs */
+    pointer-events: none;
+}
+
+/* BACKGROUND ANIMATIONS (Blobs) */
+.background-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3; /* Moved behind noise */
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* NOISE OVERLAY */
+#noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0.12; /* Ajuste para ter uma granulação suave */
+    background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    animation: grain 1.5s steps(4) infinite;
+}
+
+@keyframes grain {
+    0%, 100% { background-position: 0 0; }
+    25% { background-position: -20px -20px; }
+    50% { background-position: -40px 20px; }
+    75% { background-position: 20px -40px; }
+}
+
+.blob {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.15;
+    border-radius: 50%;
+    animation: move 20s infinite alternate;
+}
+
+.blob:nth-child(2) {
+    background: radial-gradient(circle, var(--secondary-light) 0%, transparent 70%);
+    width: 500px;
+    height: 500px;
+    top: 30%;
+    right: -100px;
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+.blob:nth-child(3) {
+    background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+    width: 350px;
+    height: 350px;
+    bottom: -100px;
+    left: 10%;
+    animation-duration: 25s;
+    animation-delay: -10s;
+}
+
+@keyframes move {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(100px, 100px) scale(1.2); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header / Hero */
+.hero {
+    padding: 6rem 0 4rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    background: linear-gradient(90deg, var(--primary), var(--accent-indigo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-decor {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.decoration-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 3rem;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 100px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.decor-divider {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
+    opacity: 0.6;
+}
+
+.flag {
+    width: 120px;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    border: 1px solid rgba(255,255,255,0.8);
+}
+
+.flag:hover { transform: scale(1.1) rotate(2deg); }
+
+.coat-of-arms {
+    width: 60px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    transition: transform 0.3s;
+}
+
+.coat-of-arms:hover { transform: scale(1.1); }
+
+/* Side-by-Side Hero Section */
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-main-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 4rem;
+    width: 100%;
+    text-align: left;
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    max-width: 500px;
+}
+
+.hero-main-img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    display: block;
+    border: 6px solid white;
+    transition: transform 0.3s;
+}
+
+.hero-main-img:hover {
+    transform: scale(1.02);
+}
+
+.hero-economic-info {
+    flex: 1;
+    max-width: 500px;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.hero-trade-card {
+    border: 2px solid var(--border);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/eiffel_bg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 1.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    color: #fff; /* White text for readability */
+}
+.hero-trade-card.card-blue { background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/alps.png'); }
+.hero-trade-card.card-red { background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/provence.png'); }
+
+.hero-trade-card h4 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+    font-family: var(--font-heading);
+}
+
+.hero-trade-card p {
+    font-size: 0.95rem;
+    color: #e5e7eb; /* Lighter text for the dark background */
+}
+
+/* Section Styling */
+.section {
+    padding: 6rem 0;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    height: 4px;
+    flex-grow: 1;
+    background: linear-gradient(to right, var(--primary), transparent);
+    border-radius: 2px;
+}
+
+/* Dashboard Grid */
+.grid-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+.data-card {
+    border: 2px solid var(--border);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/eiffel_bg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.data-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-light);
+}
+
+.data-card h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+}
+
+.data-card .highlight {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #fff; /* Make highlight white */
+    font-family: var(--font-heading);
+}
+
+/* Specific Card Accents with Backgrounds */
+.card-blue { 
+    border-bottom: 4px solid var(--primary-light); 
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/riviera.png');
+}
+.card-red { 
+    border-bottom: 4px solid var(--secondary-light); 
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/provence.png');
+}
+.card-gold { 
+    border-bottom: 4px solid var(--accent-gold); 
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/alps.png');
+}
+.card-cyan { 
+    border-bottom: 4px solid var(--accent-cyan); 
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/riviera.png');
+}
+
+/* Economic Split */
+.split-dashboard {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2.5rem;
+}
+
+.card-box {
+    border: 2px solid var(--border);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/eiffel_bg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+.card-box.no-bg {
+    border: 8px solid transparent;
+    background-image: linear-gradient(var(--bg-main), var(--bg-main)), url('img/eiffel_bg.png');
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    color: var(--text-main);
+}
+.card-box h3 {
+    color: #fff !important; /* Override inline styles */
+}
+.card-box.no-bg h3 {
+    color: var(--primary) !important;
+}
+.card-box p {
+    color: #e5e7eb;
+}
+.card-box.no-bg p {
+    color: var(--text-main);
+}
+
+.chart-container {
+    padding: 1rem;
+    height: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.trade-item h4 {
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+    font-family: var(--font-heading);
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.tag.export { background: #EEF2FF; color: var(--primary); }
+.tag.import { background: #FEF2F2; color: var(--secondary); }
+
+.industry-list {
+    list-style: none;
+}
+
+.industry-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.industry-list strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.industry-list span {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #e5e7eb;
+}
+
+/* Interactive Card */
+.interactive-card {
+    background: linear-gradient(135deg, var(--primary), var(--accent-indigo));
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,91,172,0.3);
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.interactive-card:hover { transform: scale(1.02); }
+
+.interactive-card h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.curiosity-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.3);
+    margin-bottom: 1.5rem;
+}
+
+/* History Grid */
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.history-card {
+    border: 2px solid var(--border);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/eiffel_bg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2.5rem;
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.history-card:nth-child(1) { background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/provence.png'); }
+.history-card:nth-child(2) { background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/eiffel_bg.png'); }
+.history-card:nth-child(3) { background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/riviera.png'); }
+.history-card:nth-child(4) { background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/alps.png'); }
+
+.history-card h3 {
+    color: var(--secondary-light); /* Lighter red for dark background */
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+}
+.history-card p {
+    color: #e5e7eb; /* Off-white for readability */
+}
+
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 30px rgba(0, 91, 172, 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 1.8rem;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.fab:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 20px 40px rgba(0, 91, 172, 0.5);
+}
+
+/* Side Panel */
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 450px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(25px);
+    border-left: 1px solid var(--border);
+    z-index: 2000;
+    padding: 4rem 3rem;
+    transition: right 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.side-panel.open { right: 0; }
+
+.side-panel h2 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-heading);
+}
+
+.note-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.note-box h4 {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.close-panel {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    background: var(--bg-soft);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Specific Box Backgrounds */
+.card-box.choice-bg {
+    border: 2px solid var(--border);
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/eiffel_bg.png');
+    box-shadow: var(--shadow-md);
+}
+.card-box.choice-bg h2 {
+    color: #fff !important;
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden { display: none; }
+
+footer {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 991px) {
+    .hero-main-flex { flex-direction: column; text-align: center; }
+    .split-dashboard { grid-template-columns: 1fr; }
+    .history-grid { grid-template-columns: 1fr; }
+    .side-panel { width: 100%; right: -100%; }
+}

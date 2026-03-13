@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>França | Geografia Industrial Premium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Animations -->
+    <div id="noise-overlay"></div>
+    <canvas id="bg-particles"></canvas>
+    <div class="background-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="togglePanel()" title="Dicas de Apresentação">
+        <span>?</span>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="side-panel" id="side-panel">
+        <button class="close-panel" onclick="togglePanel()">×</button>
+        <h2>Dicas de Fala</h2>
+
+        <div class="note-box">
+            <h4>Visão Geral</h4>
+            <p>"A França é a segunda maior economia da União Europeia. Notem como Paris centraliza muito dessa força
+                política e econômica."</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Setor Aeroespacial</h4>
+            <p>"Aqui vemos um exemplo de alta tecnologia. A Airbus é o maior orgulho da indústria francesa moderna."</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Energia Nuclear</h4>
+            <p>"70% da energia deles é nuclear. É por isso que a França tem uma das indústrias mais 'limpas' do mundo em
+                termos de CO2."</p>
+        </div>
+
+        <div class="note-box">
+            <h4>História Profunda</h4>
+            <p>"Falem sobre o Colbertismo - como as indústrias de luxo francesas começaram no século XVII. E citem os
+                'Trinta Gloriosos' como o período em que a França se tornou essa potência que vemos hoje."</p>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="container reveal">
+            <h1 class="title">FRANÇA</h1>
+            <p class="subtitle">Um estudo aprofundado sobre a potência econômica mediterrânea e seu legado industrial.
+            </p>
+
+            <div class="hero-decor">
+                <div class="decoration-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="Bandeira"
+                        class="flag">
+                    <div class="decor-divider"></div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Armoiries_r%C3%A9publique_fran%C3%A7aise.svg"
+                        alt="Brasão" class="coat-of-arms">
+                </div>
+            </div>
+
+            <div class="hero-main-flex reveal">
+                <div class="hero-image-wrapper">
+                    <img src="img/hero.png" alt="Eiffel Tower at Sunset" class="hero-main-img">
+                </div>
+
+                <div class="hero-economic-info">
+                    <div class="hero-trade-card card-blue">
+                        <span class="tag export">Líder de Exportação</span>
+                        <h4>Aviação & Aeroespacial</h4>
+                        <p><strong>Parceiros:</strong> Alemanha, EUA, Itália, Bélgica, Espanha.</p>
+                    </div>
+
+                    <div class="hero-trade-card card-red">
+                        <span class="tag import">Líder de Importação</span>
+                        <h4>Automóveis & Peças</h4>
+                        <p><strong>Países Origem:</strong> Alemanha, Espanha, Itália, China, Bélgica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard Data -->
+        <section class="section">
+            <h2 class="section-title">Indicadores Gerais</h2>
+            <div class="grid-dashboard">
+                <div class="data-card card-blue reveal">
+                    <h3>Capital do País</h3>
+                    <p class="highlight">Paris</p>
+                </div>
+                <div class="data-card card-cyan reveal">
+                    <h3>Área Territorial</h3>
+                    <p class="highlight">643.801 km²</p>
+                </div>
+                <div class="data-card card-gold reveal">
+                    <h3>População Total</h3>
+                    <p class="highlight">68,4 Mi</p>
+                </div>
+                <div class="data-card card-red reveal">
+                    <h3>PIB Nominal</h3>
+                    <p class="highlight">US$ 3,2 Tri</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economics Dashboard -->
+        <section class="section">
+            <h2 class="section-title">Base Industrial</h2>
+            <div class="split-dashboard">
+                <div class="card-box reveal">
+                    <img src="img/industry.png" alt="Aeronáutica" class="section-image">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Excelência Industrial</h3>
+                    <p>A França mantém uma base fabril diversificada, liderando setores tecnológicos críticos e
+                        garantindo soberania econômica através da inovação constante.</p>
+                </div>
+
+                <div class="card-box reveal">
+                    <h3 style="margin-bottom: 2rem; color: var(--primary);">Setores Estratégicos</h3>
+                    <ul class="industry-list">
+                        <li><strong>Aeroespacial</strong> <span>Líder Mundial</span></li>
+                        <li><strong>Automotivo</strong> <span>Renault / Peugeot</span></li>
+                        <li><strong>Energia Nuclear</strong> <span>Eletricidade Limpa</span></li>
+                        <li><strong>Artigos de Luxo</strong> <span>Moda / Perfumes</span></li>
+                        <li><strong>Agroindústria</strong> <span>Vinhos / Queijos</span></li>
+                        <li><strong>Bélico</strong> <span>Defesa Avançada</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Poderio Economico -->
+        <section class="section">
+            <div class="split-dashboard">
+                <div class="card-box no-bg reveal"
+                    style="display: flex; flex-direction: column; justify-content: center;">
+                    <h2 class="section-title" style="margin-bottom: 1.5rem; color: var(--primary);">Poderio Econômico
+                    </h2>
+                    <h3 style="margin-bottom: 1rem; color: var(--secondary);">A 7º Maior do Mundo</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-main);">Com um Produto Interno Bruto (PIB)
+                        nominal estimado em <strong>US$ 3,2 Trilhões</strong>, a França se consolida historicamente
+                        entre as maiores potências econômicas globais.</p>
+                    <p style="color: var(--text-main);">No cenário continental, ela representa a <strong>2ª maior
+                            economia da União Europeia</strong>, preenchendo o pilar fundamental do bloco junto à
+                        Alemanha, liderando sobretudo em indústrias de alto valor agregado como aviação civil, bens de
+                        luxo, defesa e farmacêutica.</p>
+                </div>
+                <div class="card-box no-bg reveal chart-container">
+                    <canvas id="gdpChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interaction -->
+        <section class="section">
+            <div class="interactive-card reveal" onclick="toggleCuriosity()">
+                <div class="card-front" id="curiosity-front">
+                    <img src="img/energy.png" alt="Reator Nuclear" class="curiosity-img">
+                    <h2>Curiosidade Industrial</h2>
+                    <p>Você sabia que a França "exporta" eletricidade? Clique para ver.</p>
+                </div>
+                <div class="card-back hidden" id="curiosity-reveal">
+                    <h3>Independência Energética</h3>
+                    <p>A França opera 56 reatores nucleares. Essa escolha técnica permite que o país exporte
+                        eletricidade para vizinhos como a Itália e a Alemanha, mantendo baixíssimos níveis de poluição
+                        industrial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- History -->
+        <section class="section">
+            <h2 class="section-title">O Legado Industrial Francês</h2>
+            <div class="history-grid">
+                <div class="history-card reveal">
+                    <h3>1. Origens e Colbertismo</h3>
+                    <p>A industrialização francesa tem raízes no século XVII com Jean-Baptiste Colbert. Ele promoveu o
+                        <strong>Colbertismo</strong>, uma forma de mercantilismo que incentivava manufaturas estatais de
+                        luxo (como tapeçarias e cristais), estabelecendo a reputação francesa de sofisticação que dura
+                        até hoje.
+                    </p>
+                </div>
+                <div class="history-card reveal">
+                    <h3>2. A Revolução e as Ferrovias</h3>
+                    <p>Após a Revolução Francesa unificar o mercado nacional, o século XIX trouxe a expansão das
+                        ferrovias. Sob Napoleão III, a França viveu sua arrancada metalúrgica, conectando carvão e ferro
+                        e criando uma malha logística que impulsionou a indústria pesada.</p>
+                </div>
+                <div class="history-card reveal">
+                    <h3>3. Belle Époque e Inovação</h3>
+                    <p>No início do século XX, a França foi pioneira no <strong>automobilismo e aviação</strong>.
+                        Empresas como Renault e Citroën surgiram aqui, transformando o país em um centro global de
+                        inovação tecnológica e design industrial de ponta.</p>
+                </div>
+                <div class="history-card reveal">
+                    <h3>4. Os Trinta Gloriosos</h3>
+                    <p>O período entre 1945 e 1975 (<em>Les Trente Glorieuses</em>) marcou o auge do crescimento
+                        francês. Foi nessa época que o país investiu massivamente em <strong>infraestrutura
+                            nuclear</strong> e criou a Airbus, consolidando sua posição como potência tecnológica
+                        mundial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Choice Motivation -->
+        <section class="section">
+            <div class="card-box reveal choice-bg" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="color: var(--secondary); margin-bottom: 1.5rem;">Por que a França?</h2>
+                <p>Escolhemos a França por sua trajetória industrial única. Diferente de outros países que focaram
+                    apenas em massa, a França sempre priorizou o <strong>valor agregado e a sofisticação</strong>,
+                    conseguindo ser competitiva desde os reatores nucleares e caças militares até a alta-costura e
+                    gastronomia de luxo.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto de Geografia - França | Interface Animada 2026</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
