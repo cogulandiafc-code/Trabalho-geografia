@@ -246,7 +246,7 @@ body {
 
 .hero-trade-card {
     border: 2px solid var(--border);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/eiffel_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/riviera.png');
     background-size: cover;
     background-position: center;
     padding: 1.5rem;
@@ -301,7 +301,7 @@ body {
 
 .data-card {
     border: 2px solid var(--border);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/eiffel_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/riviera.png');
     background-size: cover;
     background-position: center;
     padding: 2.5rem 2rem;
@@ -360,7 +360,7 @@ body {
 
 .card-box {
     border: 2px solid var(--border);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/eiffel_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/provence.png');
     background-size: cover;
     background-position: center;
     padding: 2.5rem;
@@ -371,7 +371,7 @@ body {
 }
 .card-box.no-bg {
     border: 8px solid transparent;
-    background-image: linear-gradient(var(--bg-main), var(--bg-main)), url('img/eiffel_bg.png');
+    background-image: linear-gradient(var(--bg-main), var(--bg-main)), url('img/provence.png');
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
     color: var(--text-main);
@@ -490,7 +490,7 @@ body {
 
 .history-card {
     border: 2px solid var(--border);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/eiffel_bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/provence.png');
     background-size: cover;
     background-position: center;
     padding: 2.5rem;
@@ -601,7 +601,7 @@ body {
 /* Specific Box Backgrounds */
 .card-box.choice-bg {
     border: 2px solid var(--border);
-    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/eiffel_bg.png');
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/riviera.png');
     box-shadow: var(--shadow-md);
 }
 .card-box.choice-bg h2 {
